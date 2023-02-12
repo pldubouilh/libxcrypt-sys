@@ -1,10 +1,3 @@
-# libxcrypt-sys
-
-[crate.io](https://crates.io/crates/libxcrypt-sys)
-
-### Example
-
-```rust
 use std::ffi::{CStr, CString};
 
 use libxcrypt_sys::crypt;
@@ -27,6 +20,11 @@ fn main() {
     // mkpasswd -m sha256crypt "mypassword"
     // $5$rDxsrps6AeTwJLRK$CHafsXkpg6bi5Z.kdTYhlWzmhqe9Q.RRPm0LWi/bckC
 
+    let ret_assumed = format!(
+        "{}{}${}",
+        sha256_setting, salt, "CHafsXkpg6bi5Z.kdTYhlWzmhqe9Q.RRPm0LWi/bckC"
+    );
+    assert!(ret_str == ret_assumed);
+
     println!("ret_str {ret_str:?}");
- }
- ```
+}
